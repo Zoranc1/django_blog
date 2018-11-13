@@ -36,7 +36,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
+                    {% if perms.blog.add_post %}
                     <li><a href="{% url 'write_post' %}"><i class="fas fa-plus"></i> New Post</a></li>
+                    {% endif %}
                     <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                     {% else %}
                     <li><a href="{% url 'signup' %}"><i class="fas fa-user-plus"></i> Register</a></li>
@@ -50,7 +52,7 @@
     <div id="masthead">
         <div class="container">
             <div class="row">
-                <h1> stack
+                <h1> Django Blog
                     <p id="logo" class="lead">The Trials of a Bootcamp Developer</p>
                 </h1>
             </div>

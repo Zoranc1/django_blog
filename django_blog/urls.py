@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.static import serve
 from django.conf import settings
-from blog.views import get_index,read_post,edit_post,write_post
+from blog.views import get_index,read_post,edit_post,write_post,get_unpublished_posts, publish_post
 from accounts.views import signup
 
 urlpatterns = [
@@ -27,7 +27,9 @@ urlpatterns = [
     path('', get_index, name='index'),
     path('write/', write_post, name='write_post'),
     path('signup/', signup, name='signup'),
-    path('read_post/<int:id>', read_post, name='read_post'),
-    path('edit_post/<int:id>/edit/', edit_post, name='edit_post'),
+    path('posts/unpublished', get_unpublished_posts, name='get_unpublished_posts'),
+    path('posts/<int:id>', read_post, name='read_post'),
+    path('posts/<int:id>/edit/', edit_post, name='edit_post'),
+    path('posts/<int:id>/publish/', publish_post, name='publish_post'),
     path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT})
 ]

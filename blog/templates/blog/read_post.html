@@ -4,14 +4,13 @@
     <div class="row">
         <div class="col-md-2 col-sm-3 text-center">
             <a class="story-img" href="#">
-                <img src="#" class="img-circle">
+                <img src="{{MEDIA_URL}}{{post.author.profile.image}}"  class="img-circle">
             </a>
             <p><span class="boldtext">Author:</span> {{ post.author.username }}</p>
         </div>
         <div class="col-sm-10 col-md-9">
+            <img src="{{MEDIA_URL}}{{ post.image}}">
             <h3>{{ post.title }}</h3>
-            
-            
             <div class="row">
                 <div class="col-xs-9">
                     <p>{{ post.content | linebreaksbr }}</p>
@@ -20,8 +19,12 @@
                     <p><span class="boldtext">Tag:</span> history</p>
 
                     <a href="{% url 'index' %}" class="btn btn-default">Back to Blog</a>
+                    {% if can_edit %}
                     <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit Post</a>
-
+                    {% endif %}
+                    {% if perms.blog.can_publish %}
+                    <a href="{% url 'publish_post' post.id %}" class="btn btn-default">Publish Post</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
