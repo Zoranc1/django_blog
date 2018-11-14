@@ -91,15 +91,6 @@ a, a:hover {
     max-height: 280px;
 }
 
-.img-circle{
-    width:100px;
-    height: 100px; 
-}
-
-.img-blogpost{
-    height: 300px;
-    width: auto;
-}
 
 .txt-container {
     overflow: hidden;

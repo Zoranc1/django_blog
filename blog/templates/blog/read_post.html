@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
+{% block head_styles %}
+{{ block.super }}
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-2 col-sm-3 text-center">
