@@ -14,7 +14,9 @@
             <p><span class="boldtext">Author:</span> {{ post.author.username }}</p>
         </div>
         <div class="col-sm-10 col-md-9">
+            {% if post.image %}
             <img src="{{MEDIA_URL}}{{ post.image}}">
+            {% endif %}
             <h3>{{ post.title }}</h3>
             <div class="row">
                 <div class="col-xs-9">
